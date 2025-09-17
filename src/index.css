@@ -2,41 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* DharmaFlow Spiritual Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Spiritual Base Colors */
+    --background: 45 50% 99%;
+    --foreground: 30 20% 15%;
 
+    /* Card & Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 30 20% 15%;
+    --card-spiritual: 45 30% 97%;
 
+    /* Popover Colors */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 30 20% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Saffron Primary (ISKCON signature color) */
+    --primary: 30 95% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 30 90% 75%;
+    --primary-dark: 30 100% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Spiritual Secondary (Warm beige) */
+    --secondary: 45 25% 92%;
+    --secondary-foreground: 30 20% 25%;
+    --secondary-warm: 40 30% 88%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Spiritual Tones */
+    --muted: 45 20% 95%;
+    --muted-foreground: 30 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Sacred Accent Colors */
+    --accent: 45 40% 85%;
+    --accent-foreground: 30 25% 20%;
+    --accent-gold: 50 60% 70%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 120 40% 50%;
+    --success-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Border & Input */
+    --border: 45 25% 88%;
+    --input: 45 25% 88%;
+    --ring: 30 95% 60%;
 
-    --radius: 0.5rem;
+    /* Spiritual Gradients */
+    --gradient-saffron: linear-gradient(135deg, hsl(30 95% 60%), hsl(30 100% 45%));
+    --gradient-spiritual: linear-gradient(180deg, hsl(45 50% 99%), hsl(45 25% 92%));
+    --gradient-wisdom: linear-gradient(135deg, hsl(40 30% 88%), hsl(45 40% 85%));
+
+    /* Sacred Shadows */
+    --shadow-spiritual: 0 4px 20px hsl(30 95% 60% / 0.1);
+    --shadow-elevated: 0 8px 30px hsl(30 20% 15% / 0.08);
+    --shadow-glow: 0 0 30px hsl(30 95% 60% / 0.3);
+
+    /* Typography Sizes */
+    --text-hero: 3.5rem;
+    --text-heading: 2.25rem;
+    --text-subheading: 1.5rem;
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 

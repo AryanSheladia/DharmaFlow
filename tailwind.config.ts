@@ -19,34 +19,57 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        
+        /* Spiritual Primary Colors */
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          light: "hsl(var(--primary-light))",
+          dark: "hsl(var(--primary-dark))",
         },
+        
+        /* Spiritual Secondary & Warm Tones */
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          warm: "hsl(var(--secondary-warm))",
         },
+        
+        /* Status Colors */
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        
+        /* Muted Spiritual Tones */
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
+        
+        /* Sacred Accent Colors */
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          gold: "hsl(var(--accent-gold))",
         },
+        
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
+        
+        /* Card Colors */
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+          spiritual: "hsl(var(--card-spiritual))",
         },
+        
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -57,6 +80,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      
+      /* Spiritual Gradients */
+      backgroundImage: {
+        'gradient-saffron': 'var(--gradient-saffron)',
+        'gradient-spiritual': 'var(--gradient-spiritual)',
+        'gradient-wisdom': 'var(--gradient-wisdom)',
+      },
+      
+      /* Sacred Box Shadows */
+      boxShadow: {
+        'spiritual': 'var(--shadow-spiritual)',
+        'elevated': 'var(--shadow-elevated)',
+        'glow': 'var(--shadow-glow)',
+      },
+      
+      /* Typography Sizes */
+      fontSize: {
+        'hero': 'var(--text-hero)',
+        'heading': 'var(--text-heading)',
+        'subheading': 'var(--text-subheading)',
       },
       borderRadius: {
         lg: "var(--radius)",
