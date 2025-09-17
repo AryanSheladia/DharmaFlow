@@ -45,6 +45,11 @@ export const useAuth = () => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
+  const login = (userData: User) => {
+    localStorage.setItem('dharmaflow_user', JSON.stringify(userData));
+    setUser(userData);
+  };
+
   const logout = () => {
     localStorage.removeItem('dharmaflow_user');
     setUser(null);
@@ -54,6 +59,7 @@ export const useAuth = () => {
     user,
     isLoggedIn: !!user,
     isLoading,
+    login,
     logout
   };
 };

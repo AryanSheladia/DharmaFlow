@@ -8,6 +8,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { authenticateUser } from '@/data/mockData';
 import { BookOpen, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/hooks/useAuth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -18,6 +19,7 @@ const Login = () => {
   
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ const Login = () => {
       const user = authenticateUser(email, password);
       
       if (user) {
-        localStorage.setItem('dharmaflow_user', JSON.stringify(user));
+        login(user);
         toast({
           title: "Welcome back!",
           description: `Logged in successfully as ${user.name}`,

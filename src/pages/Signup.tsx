@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { registerUser } from '@/data/mockData';
 import { BookOpen, Eye, EyeOff, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/hooks/useAuth';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ const Signup = () => {
   
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login } = useAuth();
 
   const passwordRequirements = [
     { text: 'At least 6 characters', valid: formData.password.length >= 6 },
@@ -67,7 +69,7 @@ const Signup = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       const user = registerUser(formData.name, formData.email, formData.password);
-      localStorage.setItem('dharmaflow_user', JSON.stringify(user));
+      login(user);
       
       toast({
         title: "Welcome to DharmaFlow!",
