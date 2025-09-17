@@ -76,7 +76,8 @@ const Signup = () => {
         description: "Your account has been created successfully.",
       });
       
-      navigate('/dashboard');
+      // Use window.location to ensure proper state refresh
+      window.location.href = '/dashboard';
     } catch (err) {
       setError('An error occurred while creating your account. Please try again.');
     } finally {

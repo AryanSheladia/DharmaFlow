@@ -38,7 +38,8 @@ const Login = () => {
           title: "Welcome back!",
           description: `Logged in successfully as ${user.name}`,
         });
-        navigate('/dashboard');
+        // Use window.location to ensure proper state refresh
+        window.location.href = '/dashboard';
       } else {
         setError('Invalid email or password. Please try again.');
       }

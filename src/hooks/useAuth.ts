@@ -53,6 +53,8 @@ export const useAuth = () => {
   const logout = () => {
     localStorage.removeItem('dharmaflow_user');
     setUser(null);
+    // Navigate to home page after logout
+    window.location.href = '/';
   };
 
   return {
