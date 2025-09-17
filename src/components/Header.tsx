@@ -1,19 +1,24 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { BookOpen, User, LogIn, Menu } from 'lucide-react';
+import { BookOpen, User, LogIn, Menu, LogOut } from 'lucide-react';
 import { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth';
 
 const Header = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isLoggedIn, user, logout } = useAuth();
   
   const isActive = (path: string) => location.pathname === path;
   
-  const navItems = [
+  const baseNavItems = [
     { path: '/', label: 'Home' },
     { path: '/courses', label: 'Courses' },
-    { path: '/dashboard', label: 'Dashboard' },
   ];
+  
+  const navItems = isLoggedIn 
+    ? [...baseNavItems, { path: '/dashboard', label: 'Dashboard' }]
+    : baseNavItems;
 
   return (
     <header className="bg-card border-b border-border shadow-spiritual sticky top-0 z-50">
@@ -48,17 +53,31 @@ const Header = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="ghost" size="sm" className="gap-2">
-                <User className="w-4 h-4" />
-                Login
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button variant="saffron" size="sm">
-                Join Now
-              </Button>
-            </Link>
+            {isLoggedIn ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-muted-foreground">
+                  Welcome, {user?.name}
+                </span>
+                <Button variant="ghost" size="sm" className="gap-2" onClick={logout}>
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button variant="ghost" size="sm" className="gap-2">
+                    <User className="w-4 h-4" />
+                    Login
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button variant="saffron" size="sm">
+                    Join Now
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,17 +108,39 @@ const Header = () => {
                 </Link>
               ))}
               <div className="flex flex-col space-y-2 px-4 pt-2 border-t border-border">
-                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="ghost" size="sm" className="w-full justify-start gap-2">
-                    <User className="w-4 h-4" />
-                    Login
-                  </Button>
-                </Link>
-                <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="saffron" size="sm" className="w-full">
-                    Join Now
-                  </Button>
-                </Link>
+                {isLoggedIn ? (
+                  <div className="space-y-2">
+                    <div className="px-4 py-2 text-sm text-muted-foreground">
+                      Welcome, {user?.name}
+                    </div>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="w-full justify-start gap-2"
+                      onClick={() => {
+                        logout();
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Logout
+                    </Button>
+                  </div>
+                ) : (
+                  <>
+                    <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="ghost" size="sm" className="w-full justify-start gap-2">
+                        <User className="w-4 h-4" />
+                        Login
+                      </Button>
+                    </Link>
+                    <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="saffron" size="sm" className="w-full">
+                        Join Now
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>
